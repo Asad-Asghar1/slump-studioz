@@ -5,7 +5,7 @@ import Grid from "@mui/material/Grid";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import logo from "../../assets/Logo.png";
 import { useTheme } from "@mui/material/styles";
-// import { Link } from "react-router-dom";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import {
   Button,
   List,
@@ -14,40 +14,23 @@ import {
   ListItemText,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 const logoStyles = {
-  marginTop: "2rem",
-  maxWidth: "xl",
-  position: "relative",
-  //   padding: "2rem",
-  borderRadius: "8px",
-  "&::before": {
-    content: '""',
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    backgroundImage: `url(${logo})`,
-    backgroundSize: "contain", // Adjusted from 'cover' to 'contain'
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
-    opacity: 0.2, // Adjust opacity as needed
-    zIndex: -1,
-    borderRadius: "8px",
-  },
+  position: "fixed",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  zIndex: -1,
+  opacity: 0.08,
+  width: "80%",
+  maxWidth: "900px",
+  pointerEvents: "none",
 };
 
 const buttonStyles = {
-  // textTransform: "none",
-  // color: theme.palette.primary.main,
   marginTop: "3rem",
-  // color: "black", // display: "flex",
-  // alignItems: "center",
-  // textDecoration: "none",
-  width: "auto", // This ensures the button fits the content
-  padding: "0.5rem 1rem", // Optional: Adjust padding as needed
+  width: "auto",
+  padding: "0.5rem 1rem",
   "&:hover": {
     backgroundColor: "#00C3AD",
     color: "#fff",
@@ -59,13 +42,20 @@ function PrivacyPolicy() {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   useEffect(() => {
-    window.scrollTo(0, 0); // Scroll to the top of the page when the component mounts
+    window.scrollTo(0, 0);
   }, []);
 
   return (
     <Fragment>
-      <Container sx={logoStyles}>
-        <Container maxWidth={"xl"}>
+      <Container
+        maxWidth={"xl"}
+        sx={{ position: "relative", textAlign: "justify" }}
+      >
+        <img src={logo} alt="Logo" style={logoStyles} />
+        <Container
+          maxWidth={"xl"}
+          sx={{ paddingTop: "2rem", paddingBottom: "2rem", flexGrow: 1 }}
+        >
           <Grid
             item
             xs={12}
@@ -115,6 +105,7 @@ function PrivacyPolicy() {
                   sx={{
                     "& .MuiListItemText-primary": {
                       fontSize: "16px",
+                      textAlign: "justify",
                     },
                   }}
                   primary="We log information about your use of the app, including the type of device you use, the features you use, access times, and your IP address."
@@ -129,6 +120,7 @@ function PrivacyPolicy() {
                   sx={{
                     "& .MuiListItemText-primary": {
                       fontSize: "16px",
+                      textAlign: "justify",
                     },
                   }}
                 />
@@ -142,6 +134,7 @@ function PrivacyPolicy() {
                   sx={{
                     "& .MuiListItemText-primary": {
                       fontSize: "16px",
+                      textAlign: "justify",
                     },
                   }}
                 />
@@ -155,6 +148,7 @@ function PrivacyPolicy() {
                   sx={{
                     "& .MuiListItemText-primary": {
                       fontSize: "16px",
+                      textAlign: "justify",
                     },
                   }}
                 />
@@ -168,6 +162,7 @@ function PrivacyPolicy() {
                   sx={{
                     "& .MuiListItemText-primary": {
                       fontSize: "16px",
+                      textAlign: "justify",
                     },
                   }}
                 />
@@ -440,14 +435,14 @@ function PrivacyPolicy() {
               At slumpstudioz@gmail.com for any query. We will be there for
               immediate support.Thanks.
             </Typography>
-            <Button
+            {/* <Button
               component={Link}
               variant="outlined"
               to="/home"
               sx={buttonStyles}
             >
               Go Back Home
-            </Button>
+            </Button> */}
           </Grid>
         </Container>
       </Container>
