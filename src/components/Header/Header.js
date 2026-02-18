@@ -40,29 +40,74 @@ function Header() {
     };
   }, []);
 
+  // const renderButtons = () => (
+  //   <>
+  //     {["Home", "Games", "Redemption", "Privacy Policy"].map((text, index) => (
+  //       <Button
+  //         key={index}
+  //         color="inherit"
+  //         variant="primary"
+  //         component={Link}
+  //         to={`/${text.toLowerCase().replace(/\s/g, "")}`}
+  //         sx={{
+  //           position: "relative",
+  //           color:
+  //             location.pathname === `/${text.toLowerCase().replace(/\s/g, "")}`
+  //               ? theme.palette.underline.main
+  //               : "inherit",
+  //           "&::after": {
+  //             content: '""',
+  //             position: "absolute",
+  //             width:
+  //               location.pathname ===
+  //               `/${text.toLowerCase().replace(/\s/g, "")}`
+  //                 ? "100%"
+  //                 : "0%",
+  //             height: "3px",
+  //             bottom: "-5px",
+  //             left: "0",
+  //             backgroundColor: theme.palette.underline.main,
+  //             transition: "width 0.3s ease",
+  //           },
+  //           "&:hover": {
+  //             color: theme.palette.underline.main,
+  //           },
+  //           "&:hover::after": {
+  //             width: "100%",
+  //           },
+  //           marginRight: 4,
+  //           paddingLeft: theme.spacing(2),
+  //           paddingRight: theme.spacing(2),
+  //         }}
+  //       >
+  //         {text}
+  //       </Button>
+  //     ))}
+  //   </>
+  // );
   const renderButtons = () => (
     <>
-      {["Home", "Games", "Redemption", "Privacy Policy"].map((text, index) => (
+      {[
+        { text: "Home", path: "/" },
+        { text: "Games", path: "/games" },
+        { text: "Redemption", path: "/redemption" },
+        { text: "Privacy Policy", path: "/privacy-policy" }, // Explicit path
+      ].map((item, index) => (
         <Button
           key={index}
           color="inherit"
           variant="primary"
           component={Link}
-          to={`/${text.toLowerCase().replace(/\s/g, "")}`}
+          to={item.path}
           sx={{
             position: "relative",
-            color:
-              location.pathname === `/${text.toLowerCase().replace(/\s/g, "")}`
-                ? theme.palette.underline.main
-                : "inherit",
+            color: location.pathname === item.path
+              ? theme.palette.underline.main
+              : "inherit",
             "&::after": {
               content: '""',
               position: "absolute",
-              width:
-                location.pathname ===
-                `/${text.toLowerCase().replace(/\s/g, "")}`
-                  ? "100%"
-                  : "0%",
+              width: location.pathname === item.path ? "100%" : "0%",
               height: "3px",
               bottom: "-5px",
               left: "0",
@@ -80,12 +125,12 @@ function Header() {
             paddingRight: theme.spacing(2),
           }}
         >
-          {text}
+          {item.text}
         </Button>
       ))}
     </>
   );
-
+  
   return (
     <>
       <AppBar
@@ -105,7 +150,7 @@ function Header() {
           sx={{
             padding: "0",
             justifyContent:
-              isMobile || location.pathname === "/privacypolicy"
+              isMobile || location.pathname === "/privacy-policy"
                 ? "center"
                 : "space-between",
           }}
@@ -119,7 +164,7 @@ function Header() {
               height: "auto",
             }}
           />
-          {!isMobile && location.pathname !== "/privacypolicy" && (
+          {!isMobile && location.pathname !== "/privacy-policy" && (
             <Box
               sx={{
                 display: "flex",
@@ -134,9 +179,9 @@ function Header() {
       </AppBar>
       {!isMobile &&
         isScrolledDown &&
-        location.pathname !== "/privacypolicy" &&
+        location.pathname !== "/privacy-policy" &&
         <SideIcons/>}
-      {isMobile && location.pathname !== "/privacypolicy" && <SideIcons/>}
+      {isMobile && location.pathname !== "/privacy-policy" && <SideIcons/>}
     </>
   );
 }

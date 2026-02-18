@@ -9,10 +9,12 @@ const Footer = () => {
     <footer
       style={{
         padding: "20px",
-        backgroundColor: "#fff",
+        backgroundColor: "transparent",
         textAlign: "center",
         marginTop: "8rem",
         marginBottom: "30px",
+        zIndex: 1,
+        position: "relative",
       }}
     >
       <Grid container spacing={3} justifyContent="center" alignItems="center">

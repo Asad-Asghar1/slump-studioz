@@ -51,8 +51,8 @@ const SideIcons = () => {
       <IconButton component={Link} to="/redemption" color="inherit">
         <RedemptionIcon {...getIconProps("/redemption")} />
       </IconButton>
-      <IconButton component={Link} to="/privacypolicy" color="inherit">
-        <PrivacyPolicyIcon {...getIconProps("/privacypolicy")} />
+      <IconButton component={Link} to="/privacy-policy" color="inherit">
+        <PrivacyPolicyIcon {...getIconProps("/privacy-policy")} />
       </IconButton>
     </Box>
   );
